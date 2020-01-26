@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>
+Items in cart
+</title>
+</head>
+<body>
+<div id="cart">
+</div>
+<script>
+var cproducts=[];
+var products=[];
+var retrievData = localStorage.getItem("List");
+	if(retrievData!=null)
+		products = JSON.parse(retrievData);
+var retrievedData = localStorage.getItem("key1");
+   	if(retrievedData!=null)
+   	cproducts = JSON.parse(retrievedData);
+	var tta=0;
+	document.getElementById("cart").innerHTML="";
+	for(var opi=0;opi<cproducts.length;opi++)
+	{
+		var par1=document.getElementById("cart");
+		var child1=document.createElement("p");
+		var child11=document.createTextNode(cproducts[opi].Name);
+		par1.appendChild(child11);
+		par1.appendChild(child1);
+		var child2=document.createElement("p");
+		var child21=document.createTextNode(cproducts[opi].Desc);
+		par1.appendChild(child21);
+		par1.appendChild(child2);
+		var child3=document.createElement("p");
+		var child31=document.createTextNode(cproducts[opi].Price);
+		par1.appendChild(child31);
+		par1.appendChild(child3);
+		var child4=document.createElement("p");
+		var child41=document.createTextNode(cproducts[opi].Quantity);
+		par1.appendChild(child41);
+		par1.appendChild(child4);
+		var child51=document.createElement("button");
+		child51.innerHTML="delete";
+		child51.setAttribute("onclick","deletecart("+opi+")");
+		child51.setAttribute("style","color:white;text-decoration:none;background:orange;padding:5px;border-radius:10px;display:inline-block;border: none;");
+		par1.appendChild(child51);
+		var space2=document.createElement("br");
+		par1.appendChild(space2);
+		tta=tta+cproducts[opi].Price*cproducts[opi].Quantity;
+	}
+	if(cproducts.length!=0)
+	{
+		var paren=document.getElementById("cart");
+		var child1=document.createElement("p");
+		var child12=document.createTextNode("Total amount is Rupees ");
+		var child3=document.createTextNode(tta);
+		paren.appendChild(child12);
+		paren.appendChild(child3);
+		paren.appendChild(child1);
+	}
+function addlocks(e)
+{
+	localStorage.setItem('List',JSON.stringify(e));
+}
+function deletecart(p)
+{
+	var checking;
+	for(var l=0;l<products.length;l++)
+	{
+		if(products[l].Name==cproducts[p].Name)
+		{
+			checking=l;
+			break;
+		}
+	}
+	if(checking!=null)
+	products[checking].Quantity+=cproducts[p].Quantity;
+	cproducts.splice(p,1);
+	addlocks(products);
+	toddlos(cproducts);
+	document.getElementById("cart").innerHTML="";
+	location.reload();
+}
+function addtocart(index)
+{
+	var y=index;
+	if(products[index].Quantity==0)
+	{
+		alert("Invalid quantity");
+	}
+	else
+	{
+		var op=tosearch(products[index].Name);
+		if(op==1)
+		{
+			createit(y);
+		}
+		products[index].Quantity=products[index].Quantity-1;
+		addlocks(products);
+		toddlos(cproducts);
+	}
+	document.getElementById("cart").innerHTML="";
+
+}
+function tosearch(c)
+{
+	for(var o=0;o<cproducts.length;o++)
+	{
+		if(cproducts[o].Name==c)
+		{
+			cproducts[o].Quantity=cproducts[o].Quantity+1;
+			return 0;
+		}
+	}
+	return 1;
+}
+function createit(ind)
+{
+	var objProduct = new Object();
+ 	objProduct.Name = products[ind].Name;
+    objProduct.Desc = products[ind].Desc;
+	objProduct.Price = products[ind].Price;
+	objProduct.Quantity =1;
+    cproducts.push(objProduct);
+}
+function toddlos(d)
+{
+	localStorage.setItem('key1',JSON.stringify(d));
+}
+</script>
+<a href="pro2.html"><button style="color:white;text-decoration:none;background:Green;padding:5px;border-radius:10px;display:inline-block;border: none;"">Add Product</button>
+</body>
+</html>

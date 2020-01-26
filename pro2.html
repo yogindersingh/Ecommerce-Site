@@ -1,0 +1,68 @@
+<html>
+<head><title>Adding Products</title></head>
+<script src="pro2.js">
+</script>
+<style>
+	.supi{color: red;}
+	th, td {padding: 10px;text-align: left;border-spacing: 10px;}
+	table{border:2px;border-collapse:collapse;}
+	body {background-image: url("1.jpeg");background-repeat:no-repeat;background-size:cover;}
+	.ex_b {color: #fff;text-transform: uppercase;text-decoration: none;background: #60a3bc;padding: 20px;border-radius: 50px;display:inline-block;border: none;transition: all 0.4s ease 0s;} 
+	.ex_b:hover {text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);transition: all 0.4s ease 0s;}
+	.ex_c {color: #494949;text-transform: uppercase;text-decoration: none;background: #ffffff;padding: 15px;border: 2px solid #494949;display: inline-block;transition: all 0.4s ease 0s;}
+	.ex_c:hover {color:yellow;background:green;border-color: #f6b93b;transition: all 0.4s ease 0s;}
+	p{font-size:15px;};
+	.ex_c {color: #fff;text-transform: uppercase;text-decoration: none;background: #60a3bc;padding: 20px;border-radius: 50px;display:inline-block;border: none;transition: all 0.4s ease 0s;} 
+	.ex_c:hover {color:yellow;background:green;border-color: #f6b93b;transition: all 0.4s ease 0s;}
+	p{font-size:15px;};
+	</style>
+<body>
+	<div align="center" style="vertical-align:bottom">
+	<table>
+		<caption><p class="para" style="font-size:150%">Add new Products</p></caption>
+		<tr>
+			<td><p class="para" style="font-size:150%">Product Name:<sup class="supi">*</sup></p></td>
+			<td><input type="text" id="101" placeholder="Enter the product name here" width="48" title="Product Name"></td>
+</tr>
+<tr>
+	<td>
+		<p class="para" style="font-size:150%">Product description:<sup class="supi">*</sup>
+	</td>
+	<td>
+		<textarea id ="102" placeholder="Enter the product desciption here" title="Product description"></textarea>
+	</td>
+	</tr>
+	<tr>
+		<td>
+			<p class="para" style="font-size:150%">Product price:<sup class="supi">*</sup>
+		</td>
+		<td>
+			<input type="text" id="103" placeholder="Enter the product price here" title="Product price">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p class="para" style="font-size:150%">Product quantity:<sup class="supi">*</sup>
+		</td>
+		<td>
+			<input type="text" id="104" placeholder="Enter the product quantity here" title="Product quantity">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick="fu()" class="ex_b" >Add Product</button>
+		</td>
+		<td>
+			<button onclick="createNode()" class="ex_c">List of Product</button>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<center><a href="cart.html" target="_parent"><button class="ex_c">View cart</button></center>
+		</td>
+	</tr>
+</table>
+</div>
+<center><div style="width:320px;max-height:120px; overflow-y:scroll"align="center" id="demo" background="red"></div></center>
+	</body>
+</html>
